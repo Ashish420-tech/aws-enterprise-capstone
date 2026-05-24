@@ -13,20 +13,27 @@ spec:
       labels:
         app: enterprise-app
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+
       containers:
       - name: enterprise-app
         image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
+
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+              - ALL
+
         ports:
         - containerPort: 5000
+
         readinessProbe:
           httpGet:
             path: /health
             port: 5000
           initialDelaySeconds: 10
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 5000
-          initialDelaySeconds: 20
-          periodSeconds: 10

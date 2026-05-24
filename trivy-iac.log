@@ -1,0 +1,571 @@
+Trivy IaC Scan	Set up job	﻿2026-05-24T11:25:40.8966884Z Current runner version: '2.334.0'
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9005069Z ##[group]Runner Image Provisioner
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9006342Z Hosted Compute Agent
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9007328Z Version: 20260213.493
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9008253Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9009399Z Build Date: 2026-02-13T00:28:41Z
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9010354Z Worker ID: {55637529-6056-4fe2-9726-870782155e8c}
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9011675Z Azure Region: westus3
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9012586Z ##[endgroup]
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9015072Z ##[group]Operating System
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9016181Z Ubuntu
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9016896Z 24.04.4
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9017646Z LTS
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9018556Z ##[endgroup]
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9019461Z ##[group]Runner Image
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9020334Z Image: ubuntu-24.04
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9021335Z Version: 20260518.149.1
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9023496Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260518.149/images/ubuntu/Ubuntu2404-Readme.md
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9026643Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260518.149
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9028218Z ##[endgroup]
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9030196Z ##[group]GITHUB_TOKEN Permissions
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9032844Z Contents: read
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9034102Z Metadata: read
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9035092Z SecurityEvents: write
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9036074Z ##[endgroup]
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9038967Z Secret source: Actions
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9040200Z Prepare workflow directory
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9551591Z Prepare all required actions
+Trivy IaC Scan	Set up job	2026-05-24T11:25:40.9610756Z Getting action download info
+Trivy IaC Scan	Set up job	2026-05-24T11:25:41.4068960Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:41.5739391Z Download action repository 'aquasecurity/trivy-action@master' (SHA:314ff8b43182423b84c50b1670b0e10f858f2d98)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:42.2522325Z Getting action download info
+Trivy IaC Scan	Set up job	2026-05-24T11:25:42.4289060Z Download action repository 'aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514' (SHA:3fb12ec12f41e471780db15c232d5dd185dcb514)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:42.6595873Z Download action repository 'actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae' (SHA:27d5ce7f107fe9357f9df03efb73ab90386fccae)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:42.7894883Z Getting action download info
+Trivy IaC Scan	Set up job	2026-05-24T11:25:42.9788184Z Download action repository 'actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb' (SHA:9255dc7a253b0ccc959486e2bca901246202afeb)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:43.0944981Z Download action repository 'actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8' (SHA:8e8c483db84b4bee98b60c0593521ed34d9990e8)
+Trivy IaC Scan	Set up job	2026-05-24T11:25:43.2451934Z Complete job name: Trivy IaC Scan
+Trivy IaC Scan	Checkout source	﻿2026-05-24T11:25:43.3246222Z ##[group]Run actions/checkout@v4
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3247497Z with:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3248379Z   repository: Ashish420-tech/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3249764Z   token: ***
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3250475Z   ssh-strict: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3251204Z   ssh-user: git
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3251985Z   persist-credentials: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3252814Z   clean: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3254299Z   sparse-checkout-cone-mode: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3255246Z   fetch-depth: 1
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3255983Z   fetch-tags: false
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3256736Z   show-progress: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3257491Z   lfs: false
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3258169Z   submodules: false
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3258950Z   set-safe-directory: true
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.3260174Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4450258Z Syncing repository: Ashish420-tech/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4453771Z ##[group]Getting Git version info
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4456375Z Working directory is '/home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone'
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4460266Z [command]/usr/bin/git version
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4542803Z git version 2.54.0
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4574569Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4592305Z Temporarily overriding HOME='/home/runner/work/_temp/43d09e00-1883-4c14-a34d-ec3ffc9b828f' before making global git config changes
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4597952Z Adding repository directory to the temporary git global config as a safe directory
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4612270Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4665620Z Deleting the contents of '/home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone'
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4670252Z ##[group]Initializing the repository
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4675300Z [command]/usr/bin/git init /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4778110Z hint: Using 'master' as the name for the initial branch. This default branch name
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4781526Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4784861Z hint: to use in all of your new repositories, which will suppress this warning,
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4786863Z hint: call:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4788021Z hint:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4789842Z hint: 	git config --global init.defaultBranch <name>
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4791698Z hint:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4793846Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4796924Z hint: 'development'. The just-created branch can be renamed via this command:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4799356Z hint:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4800571Z hint: 	git branch -m <name>
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4801975Z hint:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4804335Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4808391Z Initialized empty Git repository in /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone/.git/
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4822252Z [command]/usr/bin/git remote add origin https://github.com/Ashish420-tech/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4858729Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4861527Z ##[group]Disabling automatic garbage collection
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4864374Z [command]/usr/bin/git config --local gc.auto 0
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4896888Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4988982Z ##[group]Setting up auth
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4991739Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.4999031Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5337498Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5373983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5609848Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5655416Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5905354Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5942859Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5946268Z ##[group]Fetching the repository
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:43.5955462Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4c26f2c1e4837356bbc97adb9d956624778fcbf6:refs/remotes/origin/main
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0265474Z From https://github.com/Ashish420-tech/aws-enterprise-capstone
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0268772Z  * [new ref]         4c26f2c1e4837356bbc97adb9d956624778fcbf6 -> origin/main
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0306074Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0308577Z ##[group]Determining the checkout info
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0311240Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0314710Z [command]/usr/bin/git sparse-checkout disable
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0362279Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0393855Z ##[group]Checking out the ref
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0397178Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0484205Z Switched to a new branch 'main'
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0487669Z branch 'main' set up to track 'origin/main'.
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0499012Z ##[endgroup]
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0537971Z [command]/usr/bin/git log -1 --format=%H
+Trivy IaC Scan	Checkout source	2026-05-24T11:25:44.0561978Z 4c26f2c1e4837356bbc97adb9d956624778fcbf6
+Trivy IaC Scan	Trivy IaC Scan	﻿2026-05-24T11:25:44.1333505Z ##[group]Run aquasecurity/trivy-action@master
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1335263Z with:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1336427Z   scan-type: config
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1337709Z   hide-progress: true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1339072Z   severity: CRITICAL,HIGH
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1340516Z   exit-code: 1
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1341721Z   scan-ref: .
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1343469Z   ignore-unfixed: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1344881Z   vuln-type: os,library
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1346229Z   format: table
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1348718Z   cache-dir: /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone/.cache/trivy
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1352182Z   list-all-pkgs: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1353663Z   version: v0.70.0
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1354711Z   cache: true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1355430Z   skip-setup-trivy: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1356682Z   token-setup-trivy: ***
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1357488Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1684698Z ##[group]Run aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1686068Z with:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1686716Z   version: v0.70.0
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1687409Z   cache: true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1688335Z   token: ***
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1689026Z   path: $HOME/.local/bin
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1689876Z   github-server-url: https://github.com
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1690801Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1748210Z ##[group]Run echo "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1749722Z [36;1mecho "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1795897Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.1797062Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2159064Z ##[group]Run actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2160374Z with:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2161084Z   path: /home/runner/.local/bin/trivy-bin
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2162082Z   key: trivy-binary-v0.70.0-Linux-X64
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2163327Z   enableCrossOsArchive: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2164240Z   fail-on-cache-miss: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2165077Z   lookup-only: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.2165835Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:44.5764319Z Cache hit for: trivy-binary-v0.70.0-Linux-X64
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:45.8414106Z Received 4194304 of 43751246 (9.6%), 4.0 MBs/sec
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.1642075Z Received 43751246 of 43751246 (100.0%), 31.5 MBs/sec
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.1643617Z Cache Size: ~42 MB (43751246 B)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.1681654Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f185137c-1fe3-4f12-8ce2-ee5ddf84a71d/cache.tzst -P -C /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone --use-compress-program unzstd
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4668723Z Cache restored successfully
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4770906Z Cache restored from key: trivy-binary-v0.70.0-Linux-X64
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4894653Z ##[group]Run echo /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4895130Z [36;1mecho /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4928198Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.4928570Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5020088Z ##[group]Run echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5020489Z [36;1mecho "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5053385Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5053747Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5200599Z ##[group]Run actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5200992Z with:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5201524Z   path: /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone/.cache/trivy
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5201960Z   key: cache-trivy-2026-05-24
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5202209Z   restore-keys: cache-trivy-
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5202444Z   enableCrossOsArchive: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5202682Z   fail-on-cache-miss: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5202906Z   lookup-only: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5203579Z   save-always: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.5203786Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8636206Z Cache not found for input keys: cache-trivy-2026-05-24, cache-trivy-
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8718443Z ##[group]Run echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8718831Z [36;1mecho "$GITHUB_ACTION_PATH" >> $GITHUB_PATH[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8754857Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8755190Z env:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8755544Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/aquasecurity/trivy-action/master
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8755991Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8827827Z ##[group]Run rm -f trivy_envs.txt
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8828103Z [36;1mrm -f trivy_envs.txt[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8828335Z [36;1mtouch trivy_envs.txt[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8858219Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8858557Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8950687Z ##[group]Run # Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8951569Z [36;1m# Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8952236Z [36;1m# This limitation affects how we handle default values and empty inputs.[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8952791Z [36;1m# For more information, see: https://github.com/actions/runner/issues/924[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8953596Z [36;1m[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8953971Z [36;1m# The following logic implements the configuration priority described in the README:[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8954404Z [36;1m#[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8954575Z [36;1m# Inputs[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8954775Z [36;1m# Environment Variables[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8955015Z [36;1m# Config File[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8955218Z [36;1m# Defaults[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8955396Z [36;1m#[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8955786Z [36;1m# As noted above defaults are awkward to handle as GitHub Actions will inject those values as the input[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8956446Z [36;1m# if the caller doesn't provide them, thus if the input matches the default we don't set it as we[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8957097Z [36;1m# can't tell the difference.  Plus if we did set it when it was the default value then it could potentially[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8957818Z [36;1m# override an external environment variable, or something in the callers configuration file, which then wouldn't[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8958391Z [36;1m# match the configuration priority that is documented.[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8958718Z [36;1mset_env_var_if_provided() {[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8958968Z [36;1m  local var_name="$1"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8959201Z [36;1m  local input_value="$2"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8959444Z [36;1m  local default_value="$3"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8959667Z [36;1m[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8959939Z [36;1m  if [ -n "$input_value" ] && [ "$input_value" != "$default_value" ]; then[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8960393Z [36;1m    # If action was provided with explicit input by the caller set that[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8960907Z [36;1m    # Use printf %q to safely escape special characters and prevent command injection[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8961423Z [36;1m    printf 'export %s=%q\n' "$var_name" "$input_value" >> trivy_envs.txt[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8961771Z [36;1m  fi[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8961948Z [36;1m}[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8962113Z [36;1m[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8962377Z [36;1m# Set environment variables, handling those with default values[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8963622Z [36;1m# cf. https://aquasecurity.github.io/trivy/latest/docs/configuration/#environment-variables[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8964488Z [36;1mset_env_var_if_provided "TRIVY_INPUT" "$INPUT_INPUT" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8964905Z [36;1mset_env_var_if_provided "TRIVY_EXIT_CODE" "$INPUT_EXIT_CODE" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8965385Z [36;1mset_env_var_if_provided "TRIVY_IGNORE_UNFIXED" "$INPUT_IGNORE_UNFIXED" "false"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8965907Z [36;1mset_env_var_if_provided "TRIVY_PKG_TYPES" "$INPUT_VULN_TYPE" "os,library"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8966608Z [36;1mset_env_var_if_provided "TRIVY_SEVERITY" "$INPUT_SEVERITY" "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8967140Z [36;1mset_env_var_if_provided "TRIVY_FORMAT" "$INPUT_FORMAT" "table"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8967564Z [36;1mset_env_var_if_provided "TRIVY_TEMPLATE" "$INPUT_TEMPLATE" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8967980Z [36;1mset_env_var_if_provided "TRIVY_OUTPUT" "$INPUT_OUTPUT" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8968389Z [36;1mset_env_var_if_provided "TRIVY_SKIP_DIRS" "$INPUT_SKIP_DIRS" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8968821Z [36;1mset_env_var_if_provided "TRIVY_SKIP_FILES" "$INPUT_SKIP_FILES" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8969250Z [36;1mset_env_var_if_provided "TRIVY_TIMEOUT" "$INPUT_TIMEOUT" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8969689Z [36;1mset_env_var_if_provided "TRIVY_IGNORE_POLICY" "$INPUT_IGNORE_POLICY" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8970148Z [36;1mset_env_var_if_provided "TRIVY_QUIET" "$INPUT_HIDE_PROGRESS" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8970603Z [36;1mset_env_var_if_provided "TRIVY_LIST_ALL_PKGS" "$INPUT_LIST_ALL_PKGS" "false"[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8971077Z [36;1mset_env_var_if_provided "TRIVY_SCANNERS" "$INPUT_SCANNERS" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8971490Z [36;1mset_env_var_if_provided "TRIVY_CONFIG" "$INPUT_TRIVY_CONFIG" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8971900Z [36;1mset_env_var_if_provided "TRIVY_TF_VARS" "$INPUT_TF_VARS" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.8972315Z [36;1mset_env_var_if_provided "TRIVY_DOCKER_HOST" "$INPUT_DOCKER_HOST" ""[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9001848Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9002189Z env:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9002363Z   INPUT_INPUT: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9002570Z   INPUT_EXIT_CODE: 1
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9002798Z   INPUT_IGNORE_UNFIXED: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9003347Z   INPUT_VULN_TYPE: os,library
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9003590Z   INPUT_SEVERITY: CRITICAL,HIGH
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9003818Z   INPUT_FORMAT: table
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004006Z   INPUT_TEMPLATE: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004195Z   INPUT_OUTPUT: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004376Z   INPUT_SKIP_DIRS: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004562Z   INPUT_SKIP_FILES: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004752Z   INPUT_TIMEOUT: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9004938Z   INPUT_IGNORE_POLICY: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9005144Z   INPUT_HIDE_PROGRESS: true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9005356Z   INPUT_LIST_ALL_PKGS: false
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9005569Z   INPUT_SCANNERS: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9005758Z   INPUT_TRIVY_CONFIG: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9005943Z   INPUT_TF_VARS: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9006131Z   INPUT_DOCKER_HOST: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9006319Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9081132Z ##[group]Run entrypoint.sh
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9081381Z [36;1mentrypoint.sh[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9110561Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9110885Z env:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9111070Z   INPUT_SCAN_TYPE: config
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9111291Z   INPUT_IMAGE_REF: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9111475Z   INPUT_SCAN_REF: .
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9111667Z   INPUT_TRIVYIGNORES: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9111868Z   INPUT_GITHUB_PAT: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9112078Z   INPUT_LIMIT_SEVERITIES_FOR_SARIF: 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9112527Z   TRIVY_CACHE_DIR: /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone/.cache/trivy
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9113263Z ##[endgroup]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:46.9184057Z Running Trivy with options: trivy config .
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8794051Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8812606Z Report Summary
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8813317Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8814363Z ┌────────────────────────────────────────────────────────┬────────────┬───────────────────┐
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8816089Z │                         Target                         │    Type    │ Misconfigurations │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8817218Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8818280Z │ app/Dockerfile                                         │ dockerfile │         1         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8819392Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8820901Z │ helm/aws-enterprise-capstone/templates/deployment.yaml │    helm    │         3         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8822219Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8823879Z │ helm/aws-enterprise-capstone/templates/service.yaml    │    helm    │         0         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8825416Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8826658Z │ k8s/base/deployment.yaml                               │ kubernetes │         3         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8827966Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8829151Z │ k8s/base/namespace.yaml                                │ kubernetes │         0         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8830412Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8831540Z │ k8s/base/service.yaml                                  │ kubernetes │         0         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8832758Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8834123Z │ terraform/environments/dev                             │ terraform  │         0         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8835322Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8836468Z │ terraform/modules/ec2/main.tf                          │ terraform  │         1         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8837779Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8839007Z │ terraform/modules/security-group/main.tf               │ terraform  │         1         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8840280Z ├────────────────────────────────────────────────────────┼────────────┼───────────────────┤
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8841556Z │ terraform/modules/vpc/main.tf                          │ terraform  │         2         │
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8843382Z └────────────────────────────────────────────────────────┴────────────┴───────────────────┘
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8844316Z Legend:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8844687Z - '-': Not scanned
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8845158Z - '0': Clean (no security findings detected)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8845570Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8845667Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8845910Z app/Dockerfile (dockerfile)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8846348Z ===========================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8846804Z Tests: 20 (SUCCESSES: 19, FAILURES: 1)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8847557Z Failures: 1 (HIGH: 1, CRITICAL: 0)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8847922Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8848415Z DS-0002 (HIGH): Specify at least 1 USER command in Dockerfile with non-root user as argument
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8849370Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8850777Z Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8852078Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8852390Z See https://avd.aquasec.com/misconfig/ds-0002
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8853406Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8854072Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8854278Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8854427Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8854868Z helm/aws-enterprise-capstone/templates/deployment.yaml (helm)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8855612Z =============================================================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8856227Z Tests: 23 (SUCCESSES: 20, FAILURES: 3)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8856816Z Failures: 3 (HIGH: 3, CRITICAL: 0)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8857224Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8858070Z KSV-0014 (HIGH): Container 'app' of Deployment 'aws-enterprise-capstone' should set 'securityContext.readOnlyRootFilesystem' to true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8859364Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8860912Z An immutable root file system prevents applications from writing to their local disk. This can limit intrusions, as attackers will not be able to tamper with the file system or write foreign executables to disk.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8862344Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8862686Z See https://avd.aquasec.com/misconfig/ksv-0014
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8863701Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8864478Z  helm/aws-enterprise-capstone/templates/deployment.yaml:18-41
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8866620Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8867588Z   18 ┌       - name: app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8868650Z   19 │         image: "742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest"
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8869690Z   20 │         imagePullPolicy: Always
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8870164Z   21 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8870602Z   22 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8871093Z   23 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8871508Z   24 │           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8871910Z   25 │             path: /health
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8872348Z   26 └             port: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8872711Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8873483Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8873837Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8873846Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8874422Z KSV-0118 (HIGH): container aws-enterprise-capstone in enterprise namespace is using the default security context
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8875446Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8877187Z Security context controls the allocation of security parameters for the pod/container/volume, ensuring the appropriate level of protection. Relying on default security context may expose vulnerabilities to potential attacks that rely on privileged access.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8879064Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8879290Z See https://avd.aquasec.com/misconfig/ksv-0118
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8879971Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8880627Z  helm/aws-enterprise-capstone/templates/deployment.yaml:18-41
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8881340Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8881874Z   18 ┌       - name: app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8884338Z   19 │         image: "742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest"
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8885228Z   20 │         imagePullPolicy: Always
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8885696Z   21 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8886112Z   22 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8886583Z   23 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8886994Z   24 │           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8887411Z   25 │             path: /health
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8887710Z   26 └             port: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8887917Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8888172Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8888370Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8888377Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8888826Z KSV-0118 (HIGH): deployment aws-enterprise-capstone in enterprise namespace is using the default security context, which allows root privileges
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8889597Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8890602Z Security context controls the allocation of security parameters for the pod/container/volume, ensuring the appropriate level of protection. Relying on default security context may expose vulnerabilities to potential attacks that rely on privileged access.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8891513Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8891641Z See https://avd.aquasec.com/misconfig/ksv-0118
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8892003Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8892357Z  helm/aws-enterprise-capstone/templates/deployment.yaml:16-41
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8892774Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8893411Z   16 ┌     spec:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8893643Z   17 │       containers:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8893886Z   18 │       - name: app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8894369Z   19 │         image: "742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest"
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8894869Z   20 │         imagePullPolicy: Always
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8895136Z   21 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8895380Z   22 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8895664Z   23 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8895909Z   24 └           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896106Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896349Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896543Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896549Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896553Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896645Z k8s/base/deployment.yaml (kubernetes)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8896883Z =====================================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8897119Z Tests: 24 (SUCCESSES: 21, FAILURES: 3)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8897550Z Failures: 3 (HIGH: 3, CRITICAL: 0)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8897711Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8898115Z KSV-0014 (HIGH): Container 'enterprise-app' of Deployment 'enterprise-app' should set 'securityContext.readOnlyRootFilesystem' to true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8898778Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8899585Z An immutable root file system prevents applications from writing to their local disk. This can limit intrusions, as attackers will not be able to tamper with the file system or write foreign executables to disk.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8900423Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8900541Z See https://avd.aquasec.com/misconfig/ksv-0014
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8900895Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8901166Z  k8s/base/deployment.yaml:17-32
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8901463Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8901767Z   17 ┌       - name: enterprise-app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8902276Z   18 │         image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8902740Z   19 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8903928Z   20 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8904408Z   21 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8904666Z   22 │           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8904921Z   23 │             path: /health
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8905181Z   24 │             port: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8905454Z   25 └           initialDelaySeconds: 10
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8905709Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8905961Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8906145Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8906151Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8906451Z KSV-0118 (HIGH): container enterprise-app in enterprise namespace is using the default security context
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8906991Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8907982Z Security context controls the allocation of security parameters for the pod/container/volume, ensuring the appropriate level of protection. Relying on default security context may expose vulnerabilities to potential attacks that rely on privileged access.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8908899Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8909018Z See https://avd.aquasec.com/misconfig/ksv-0118
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8909374Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8909644Z  k8s/base/deployment.yaml:17-32
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8909947Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8910263Z   17 ┌       - name: enterprise-app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8910810Z   18 │         image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8911270Z   19 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8911510Z   20 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8911786Z   21 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8912023Z   22 │           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8912337Z   23 │             path: /health
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8912583Z   24 │             port: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8912856Z   25 └           initialDelaySeconds: 10
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8913511Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8913776Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8913969Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8913975Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8914376Z KSV-0118 (HIGH): deployment enterprise-app in enterprise namespace is using the default security context, which allows root privileges
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8915015Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8916002Z Security context controls the allocation of security parameters for the pod/container/volume, ensuring the appropriate level of protection. Relying on default security context may expose vulnerabilities to potential attacks that rely on privileged access.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8917077Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8917194Z See https://avd.aquasec.com/misconfig/ksv-0118
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8917550Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8917820Z  k8s/base/deployment.yaml:15-32
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8918115Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8918512Z   15 ┌     spec:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8918720Z   16 │       containers:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8918971Z   17 │       - name: enterprise-app
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8919472Z   18 │         image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8919968Z   19 │         ports:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8920213Z   20 │         - containerPort: 5000
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8920478Z   21 │         readinessProbe:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8920719Z   22 │           httpGet:
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8920969Z   23 └             path: /health
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921173Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921416Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921602Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921607Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921615Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921708Z terraform/modules/ec2/main.tf (terraform)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8921958Z =========================================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8922196Z Tests: 1 (SUCCESSES: 0, FAILURES: 1)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8922440Z Failures: 1 (HIGH: 1, CRITICAL: 0)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8922605Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8922735Z AWS-0131 (HIGH): Root block device is not encrypted.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8923453Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8923889Z Block devices should be encrypted to ensure sensitive data is held securely at rest.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8924213Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8924225Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8924347Z See https://avd.aquasec.com/misconfig/aws-0131
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8924705Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8924986Z  terraform/modules/ec2/main.tf:17-33
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8925291Z    via terraform/environments/dev/main.tf:36-44 (module.ec2)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8925674Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8925973Z   17 ┌ resource "aws_instance" "app" {
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8926254Z   18 │   metadata_options {
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8926508Z   19 │     http_tokens = "required"
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8926742Z   20 │   }
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8926925Z   21 │ 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8927206Z   22 │   ami                    = data.aws_ami.amazon_linux.id
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8927564Z   23 │   instance_type          = var.instance_type
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8927899Z   24 │   subnet_id              = var.subnet_id
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928258Z   25 └   vpc_security_group_ids = [var.security_group_id]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928545Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928783Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928977Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928982Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8928998Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8929129Z terraform/modules/security-group/main.tf (terraform)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8929430Z ====================================================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8929687Z Tests: 1 (SUCCESSES: 0, FAILURES: 1)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8929936Z Failures: 1 (HIGH: 0, CRITICAL: 1)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8930097Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8930318Z AWS-0104 (CRITICAL): Security group rule allows unrestricted egress to any IP address.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8930799Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8931702Z Opening up ports to connect out to the public internet is generally to be avoided. You should restrict access to IP addresses or ranges that are explicitly required where possible.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8932319Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8932323Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8932438Z See https://avd.aquasec.com/misconfig/aws-0104
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8932790Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8933358Z  terraform/modules/security-group/main.tf:27
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8933840Z    via terraform/modules/security-group/main.tf:22-28 (egress)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8934282Z     via terraform/modules/security-group/main.tf:1-35 (aws_security_group.ec2_sg)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8934771Z      via terraform/environments/dev/main.tf:29-34 (module.security_group)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8935208Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8935499Z    1   resource "aws_security_group" "ec2_sg" {
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8935749Z    .   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8935914Z   27 [     cidr_blocks = ["0.0.0.0/0"]
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936151Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936301Z   35   }
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936533Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936719Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936724Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936729Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8936823Z terraform/modules/vpc/main.tf (terraform)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8937070Z =========================================
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8937316Z Tests: 2 (SUCCESSES: 0, FAILURES: 2)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8937565Z Failures: 2 (HIGH: 2, CRITICAL: 0)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8937726Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8937852Z AWS-0164 (HIGH): Subnet associates public IP address.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8938220Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8939041Z You should limit the provision of public IP addresses for resources. Resources should not be exposed on the public internet, but should have access limited to consumers required for the function of your application.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8939781Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8939796Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8939915Z See https://avd.aquasec.com/misconfig/aws-0164
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8940274Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8940544Z  terraform/modules/vpc/main.tf:26
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8940845Z    via terraform/modules/vpc/main.tf:20-32 (aws_subnet.public[0])
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8941234Z     via terraform/environments/dev/main.tf:1-21 (module.vpc)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8941609Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8941889Z   20   resource "aws_subnet" "public" {
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8942288Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8942572Z   26 [   map_public_ip_on_launch = true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8943206Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8943451Z   32   }
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8943722Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8943910Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8943915Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8944048Z AWS-0164 (HIGH): Subnet associates public IP address.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8944409Z ════════════════════════════════════════
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8945417Z You should limit the provision of public IP addresses for resources. Resources should not be exposed on the public internet, but should have access limited to consumers required for the function of your application.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8946161Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8946167Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8946283Z See https://avd.aquasec.com/misconfig/aws-0164
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8946633Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8946897Z  terraform/modules/vpc/main.tf:26
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8947322Z    via terraform/modules/vpc/main.tf:20-32 (aws_subnet.public[1])
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8947710Z     via terraform/environments/dev/main.tf:1-21 (module.vpc)
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8948092Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8948357Z   20   resource "aws_subnet" "public" {
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8948600Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8948778Z   26 [   map_public_ip_on_launch = true
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8948997Z   ..   
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8949150Z   32   }
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8949396Z ────────────────────────────────────────
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8949577Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8949582Z 
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8959413Z ##[error]Process completed with exit code 1.
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8982177Z ##[group]Run rm -f trivy_envs.txt
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.8982456Z [36;1mrm -f trivy_envs.txt[0m
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.9015530Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Trivy IaC Scan	Trivy IaC Scan	2026-05-24T11:25:49.9015855Z ##[endgroup]
+Trivy IaC Scan	Post Trivy IaC Scan	﻿2026-05-24T11:25:49.9284817Z Post job cleanup.
+Trivy IaC Scan	Post Trivy IaC Scan	2026-05-24T11:25:49.9361999Z Post job cleanup.
+Trivy IaC Scan	Post Checkout source	﻿2026-05-24T11:25:49.9418685Z Post job cleanup.
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0416802Z [command]/usr/bin/git version
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0462532Z git version 2.54.0
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0511967Z Temporarily overriding HOME='/home/runner/work/_temp/26cd418b-05df-49d8-bf18-efd0224a667b' before making global git config changes
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0513891Z Adding repository directory to the temporary git global config as a safe directory
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0519244Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/aws-enterprise-capstone/aws-enterprise-capstone
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0568734Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0605699Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0857731Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0897443Z http.https://github.com/.extraheader
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0936568Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.0967049Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.1344429Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Trivy IaC Scan	Post Checkout source	2026-05-24T11:25:50.1389224Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Trivy IaC Scan	Complete job	﻿2026-05-24T11:25:50.1895338Z Cleaning up orphan processes
+Trivy IaC Scan	Complete job	2026-05-24T11:25:50.2148912Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
