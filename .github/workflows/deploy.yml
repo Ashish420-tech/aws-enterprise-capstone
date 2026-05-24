@@ -1,12 +1,54 @@
-name: Deploy
+name: Deploy to EKS
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'helm/**'
+      - 'app/**'
+      - '.github/workflows/deploy.yml'
+
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
-      - name: Placeholder
-        run: echo "EKS deployment phase will replace this"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig \
+            --name aws-enterprise-eks \
+            --region ap-south-1
+
+      - name: Deploy with Helm
+        run: |
+          helm upgrade --install aws-enterprise-capstone ./helm/aws-enterprise-capstone \
+            -n enterprise \
+            --create-namespace
+
+      - name: Verify rollout
+        run: |
+          kubectl rollout status deployment/aws-enterprise-capstone \
+            -n enterprise \
+            --timeout=300s
