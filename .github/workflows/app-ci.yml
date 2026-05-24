@@ -1,0 +1,42 @@
+name: App CI
+
+on:
+  push:
+    paths:
+      - 'app/**'
+      - '.github/workflows/app-ci.yml'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Login ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build image
+        run: |
+          docker build -t aws-enterprise-capstone/app:latest ./app
+
+      - name: Tag image
+        run: |
+          docker tag aws-enterprise-capstone/app:latest \
+          742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
+
+      - name: Push image
+        run: |
+          docker push \
+          742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
