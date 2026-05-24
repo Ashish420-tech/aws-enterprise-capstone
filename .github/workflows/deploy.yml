@@ -2,13 +2,9 @@ name: Deploy to EKS
 
 on:
   push:
-    branches:
-      - main
     paths:
       - 'helm/**'
-      - 'app/**'
       - '.github/workflows/deploy.yml'
-
   workflow_dispatch:
 
 jobs:
@@ -40,6 +36,10 @@ jobs:
           aws eks update-kubeconfig \
             --name aws-enterprise-eks \
             --region ap-south-1
+
+      - name: Verify cluster auth
+        run: |
+          kubectl get nodes
 
       - name: Deploy with Helm
         run: |
