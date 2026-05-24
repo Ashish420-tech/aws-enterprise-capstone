@@ -13,7 +13,12 @@ data "aws_ami" "amazon_linux" {
   }
 }
 
+
 resource "aws_instance" "app" {
+  metadata_options {
+    http_tokens = "required"
+  }
+
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
