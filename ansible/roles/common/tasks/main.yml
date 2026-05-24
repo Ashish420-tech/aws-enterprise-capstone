@@ -1,0 +1,24 @@
+---
+- name: Update dnf cache
+  ansible.builtin.dnf:
+    update_cache: true
+  become: true
+
+- name: Install common packages
+  ansible.builtin.dnf:
+    name:
+      - wget
+      - unzip
+      - git
+      - jq
+      - python3-pip
+      - amazon-ssm-agent
+    state: present
+  become: true
+
+- name: Ensure SSM agent running
+  ansible.builtin.systemd:
+    name: amazon-ssm-agent
+    enabled: true
+    state: started
+  become: true
