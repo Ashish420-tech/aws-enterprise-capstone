@@ -1,63 +1,70 @@
 name: Enterprise Security Scan
 
+# Trigger conditions
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
+# Required permissions
 permissions:
-  id-token: write
-  contents: read
-  security-events: write
+  id-token: write          # required for GitHub OIDC -> AWS role assumption
+  contents: read           # required for checkout
+  security-events: write   # optional, harmless, retained for enterprise convention
 
 jobs:
+
+  # ---------------------------------------------------------
+  # Trivy container image vulnerability scan
+  # ---------------------------------------------------------
   trivy-image-scan:
+    name: Trivy Image Scan
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # Pull repository code
+      - name: Checkout source
         uses: actions/checkout@v4
 
+      # Authenticate to AWS using GitHub OIDC
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::742820980479:role/GitHubActionsEnterpriseCapstoneRole
           aws-region: ap-south-1
 
+      # Login to Amazon ECR
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      # Scan pushed production image
       - name: Trivy Image Scan
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
-          format: sarif
-          output: trivy-image-results.sarif
           severity: CRITICAL,HIGH
+          exit-code: 1
+          ignore-unfixed: true
 
-      - name: Upload Image Scan
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: trivy-image-results.sarif
-
+  # ---------------------------------------------------------
+  # Trivy IaC security scan
+  # ---------------------------------------------------------
   trivy-iac-scan:
+    name: Trivy IaC Scan
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # Pull repository code
+      - name: Checkout source
         uses: actions/checkout@v4
 
+      # Scan Terraform / infrastructure config
       - name: Trivy IaC Scan
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: config
           hide-progress: true
-          format: sarif
-          output: trivy-iac-results.sarif
           severity: CRITICAL,HIGH
-
-      - name: Upload IaC Scan
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: trivy-iac-results.sarif
+          exit-code: 1
