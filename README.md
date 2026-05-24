@@ -1,785 +1,228 @@
-AWS Enterprise DevOps Capstone Project
-Enterprise-Grade DevOps Platform on AWS
-Executive Summary
+# AWS Enterprise DevOps Capstone
 
-This project demonstrates the end-to-end implementation of a production-grade enterprise DevOps platform on AWS, built using Infrastructure as Code, configuration management, containerization, Kubernetes orchestration, CI/CD automation, observability, and security hardening.
+> End-to-end production-grade DevOps platform on AWS — built from scratch with IaC, Kubernetes, CI/CD automation, observability, and zero static credentials.
 
-The goal was to simulate how a real enterprise engineering team would design, deploy, secure, monitor, and automate a cloud-native application platform.
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws) ![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?logo=terraform) ![Kubernetes](https://img.shields.io/badge/Orchestration-EKS-326CE5?logo=kubernetes) ![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=github-actions) ![Security](https://img.shields.io/badge/Security-Hardened-green)
 
-The platform includes:
+---
 
-Infrastructure provisioning with Terraform
-Server configuration with Ansible
-Containerized Python Flask production application
-Amazon Elastic Container Registry (ECR)
-Amazon Elastic Kubernetes Service (EKS)
-Helm-based Kubernetes deployments
-GitHub Actions CI/CD pipelines
-GitHub OIDC federation (passwordless AWS authentication)
-CloudWatch observability stack
-SNS alerting
-CloudTrail auditing
-IAM Access Analyzer
-VPC Flow Logs
-Secrets Manager integration
-Enterprise security scanning with Trivy
-Business Problem Statement
+## What This Project Demonstrates
 
-Modern enterprises require:
+| Area | Highlights |
+|---|---|
+| **Infrastructure** | Fully automated with Terraform — VPC, EKS, IAM, EC2 |
+| **CI/CD** | 4-stage GitHub Actions pipeline with OIDC (zero static credentials) |
+| **Security** | 12 active controls including Trivy scanning, CloudTrail, and Secrets Manager |
+| **Observability** | CloudWatch Container Insights + Fluent Bit + SNS alerting |
 
-repeatable infrastructure provisioning
-secure deployment automation
-zero static cloud credentials
-scalable container orchestration
-centralized monitoring
-automated security validation
-audit logging
-cost-conscious cloud governance
+---
 
-Manual infrastructure and deployments introduce:
+## Architecture
 
-configuration drift
-human error
-security risk
-slow delivery
-poor scalability
+```
+Developer → GitHub → GitHub Actions CI/CD
+                         │
+            ┌────────────┼────────────┐
+            │            │            │
+       Terraform CI   App CI    Security Scan
+            │            │
+            └─── GitHub OIDC (passwordless) ───→ AWS IAM
+                                                    │
+                    ┌───────────────────────────────┤
+                    │                               │
+             VPC / Networking                 EKS Cluster
+             EC2 (SSM-only)                  Managed Node Group
+             IAM / Security Groups                  │
+                                           Helm → Flask App
+                                           LoadBalancer → Users
 
-This project solves these problems using enterprise DevOps engineering practices.
+Observability:  CloudWatch · Fluent Bit · Container Insights · SNS
+Security:       CloudTrail · IAM Access Analyzer · VPC Flow Logs · Secrets Manager · Trivy
+```
 
-Architecture Overview
-High-Level Architecture
-Developer
-   |
-   v
-GitHub Repository
-   |
-   +-----------------------------+
-   | GitHub Actions CI/CD        |
-   |-----------------------------|
-   | Terraform CI                |
-   | App CI                      |
-   | Deploy to EKS               |
-   | Enterprise Security Scan    |
-   +-----------------------------+
-   |
-   v
-GitHub OIDC Federation
-   |
-   v
-AWS IAM Role Assumption
-   |
-   +-----------------------------+
-   | AWS Infrastructure          |
-   +-----------------------------+
-            |
-            +-------------------+
-            | Terraform         |
-            +-------------------+
-                     |
-                     v
-          +------------------------+
-          | AWS Networking         |
-          |------------------------|
-          | VPC                    |
-          | Public Subnets         |
-          | Private Subnets        |
-          | Internet Gateway       |
-          | NAT Gateway            |
-          | Route Tables           |
-          | Security Groups        |
-          +------------------------+
-                     |
-                     +-------------------+
-                     |                   |
-                     v                   v
-              EC2 (SSM-only)        EKS Cluster
-              Ansible Host          Managed Node Group
-                                         |
-                                         v
-                                   Kubernetes
-                                         |
-                                         v
-                                      Helm
-                                         |
-                                         v
-                                Flask Production App
-                                         |
-                                         v
-                                 LoadBalancer Service
-                                         |
-                                         v
-                                  End Users / Browser
+---
 
-Observability:
-CloudWatch
-Fluent Bit
-Container Insights
-SNS Alerts
+## Technology Stack
 
-Security:
-CloudTrail
-Access Analyzer
-VPC Flow Logs
-Secrets Manager
-Trivy Scanning
-OIDC Federation
-Technology Stack
-Category	Technology
-Cloud	AWS
-IaC	Terraform
-Config Mgmt	Ansible
-Containers	Docker
-Registry	Amazon ECR
-Orchestration	Amazon EKS
-Packaging	Helm
-CI/CD	GitHub Actions
-Authentication	GitHub OIDC
-Monitoring	CloudWatch
-Logging	Fluent Bit
-Alerts	SNS
-Security Scanning	Trivy
-Secrets	AWS Secrets Manager
-Project Structure
+| Category | Technology |
+|---|---|
+| Cloud | AWS |
+| Infrastructure as Code | Terraform |
+| Configuration Management | Ansible |
+| Containers | Docker |
+| Registry | Amazon ECR |
+| Orchestration | Amazon EKS |
+| Packaging | Helm |
+| CI/CD | GitHub Actions |
+| Authentication | GitHub OIDC (passwordless) |
+| Monitoring | CloudWatch Container Insights |
+| Log Forwarding | Fluent Bit |
+| Alerting | SNS |
+| Security Scanning | Trivy |
+| Secrets | AWS Secrets Manager |
+| Audit | CloudTrail + IAM Access Analyzer + VPC Flow Logs |
+| Application | Python Flask |
+
+---
+
+## Implementation Phases
+
+### Phase 1 — Infrastructure as Code (Terraform)
+
+Modular VPC with public/private subnets, NAT gateway, IAM roles with least-privilege, and a private EC2 instance with SSM-only access (no SSH). Solved dependency ordering and IAM propagation race conditions common in large infrastructure graphs.
+
+**Key files:** `terraform/modules/networking/`, `terraform/modules/ec2/`, `terraform/modules/iam/`
+
+---
+
+### Phase 2 — Configuration Management (Ansible)
+
+Automated EC2 bootstrap and application deployment over SSM — no SSH required. Playbooks cover OS hardening, Docker installation, and container lifecycle management. Role-based structure for reuse across environments.
+
+**Key files:** `ansible/playbooks/bootstrap.yml`, `ansible/playbooks/deploy.yml`, `ansible/roles/`
+
+---
+
+### Phase 3 — Containerization (Docker + ECR)
+
+Production Python Flask image with:
+- Non-root user execution
+- Minimal base image (`python:slim`)
+- No privilege escalation
+- Pushed to ECR with vulnerability scanning enabled
+
+Trivy-detected CVEs remediated during build pipeline.
+
+**Key files:** `app/Dockerfile`, `app/app.py`
+
+---
+
+### Phase 4 — CI/CD Automation (GitHub Actions)
+
+Four automated pipelines:
+
+| Workflow | Purpose |
+|---|---|
+| `terraform-ci.yml` | Init, validate, fmt check, plan |
+| `app-ci.yml` | Docker build + ECR push |
+| `deploy.yml` | OIDC auth → EKS kubeconfig → Helm deploy |
+| `security-scan.yml` | Trivy image scan + Trivy IaC scan |
+
+**Key files:** `.github/workflows/`
+
+---
+
+### Phase 5 — Kubernetes / EKS
+
+Managed EKS cluster with OIDC provider. Migrated from raw Kubernetes manifests to Helm for versioned, parameterized, rollback-capable deployments.
+
+Runtime security hardening applied:
+- `runAsNonRoot: true`
+- `readOnlyRootFilesystem: true`
+- Dropped Linux capabilities
+- No privilege escalation
+
+**Key files:** `helm/aws-enterprise-capstone/`, `k8s/base/`
+
+---
+
+### Phase 6 — Observability (CloudWatch + SNS)
+
+- Container Insights collecting CPU, memory, node, and pod metrics
+- Fluent Bit forwarding container logs to CloudWatch Logs
+- Custom CloudWatch dashboard: `enterprise-eks-dashboard`
+- Threshold alarms with email delivery via SNS
+
+---
+
+### Phase 7 — Security Hardening
+
+| Control | Details |
+|---|---|
+| GitHub OIDC Federation | Eliminates all static AWS credentials in CI/CD |
+| CloudTrail | Full API audit logging |
+| IAM Access Analyzer | Privilege visibility and external access detection |
+| VPC Flow Logs | Network traffic audit trail |
+| Secrets Manager | Secure runtime secrets, validated from a running pod |
+| Trivy | Container and IaC scanning in CI pipeline |
+
+---
+
+## Security Controls
+
+| Control | Status |
+|---|---|
+| GitHub OIDC Federation | ✅ |
+| No Static AWS Credentials | ✅ |
+| SSM-only EC2 Access | ✅ |
+| Non-root Containers | ✅ |
+| Hardened Kubernetes Runtime | ✅ |
+| Trivy Image Scanning | ✅ |
+| Trivy IaC Scanning | ✅ |
+| CloudTrail Audit Logging | ✅ |
+| IAM Access Analyzer | ✅ |
+| VPC Flow Logs | ✅ |
+| Secrets Manager Integration | ✅ |
+| ECR Vulnerability Scanning | ✅ |
+
+---
+
+## Repository Structure
+
+```
 aws-enterprise-capstone/
-│
-├── terraform/
+├── terraform/                  # Modular IaC: networking, EC2, IAM, security
 │   ├── modules/
 │   │   ├── networking/
 │   │   ├── ec2/
 │   │   ├── iam/
 │   │   └── security/
-│   │
-│   └── environments/
-│       └── dev/
-│
-├── ansible/
+│   └── environments/dev/
+├── ansible/                    # EC2 configuration and app deployment
 │   ├── playbooks/
 │   │   ├── bootstrap.yml
 │   │   └── deploy.yml
-│   │
-│   ├── inventory/
 │   └── roles/
 │       ├── common/
 │       ├── docker/
 │       └── app/
-│
-├── app/
+├── app/                        # Python Flask app + Dockerfile
 │   ├── app.py
 │   ├── requirements.txt
 │   └── Dockerfile
-│
-├── helm/
+├── helm/                       # Helm chart for EKS deployment
 │   └── aws-enterprise-capstone/
-│
-├── k8s/
-│   └── base/
-│
-└── .github/
-    └── workflows/
-        ├── terraform-ci.yml
-        ├── app-ci.yml
-        ├── deploy.yml
-        └── security-scan.yml
-Implementation Journey
-Phase 1 — Infrastructure as Code (Terraform)
-Objective
-
-Provision reusable AWS infrastructure.
-
-Components Built
-Networking
-
-Provisioned:
-
-VPC
-Internet Gateway
-NAT Gateway
-Public Subnets
-Private Subnets
-Route Tables
-Associations
-
-Purpose:
-
-isolate workloads
-controlled ingress/egress
-enterprise network segmentation
-Security
-
-Provisioned:
-
-security groups
-IAM roles
-EC2 instance profile
-
-Purpose:
-
-least privilege
-controlled traffic
-IAM governance
-EC2
-
-Provisioned:
-
-Private EC2 instance with:
-
-no SSH
-SSM-only administration
-hardened access
-
-Purpose:
-
-Ansible execution target.
-
-Validation
-terraform init
-terraform validate
-terraform plan
-terraform apply
-Issues Faced
-1. Resource Dependency Ordering
-
-Problem:
-
-Terraform attempted dependent resource creation before prerequisites.
-
-Example:
-
-NAT before Elastic IP
-route before gateway
-
-Fix:
-
-Used explicit dependencies.
-
-2. IAM Propagation Delay
-
-Problem:
-
-Role creation succeeded but attachment not immediately usable.
-
-Fix:
-
-Retry after propagation delay.
-
-3. Route Table Misconfiguration
-
-Problem:
-
-Subnet traffic blackholed.
-
-Fix:
-
-Correct route associations.
-
-Phase 2 — Configuration Management (Ansible)
-Objective
-
-Automate EC2 configuration.
-
-Playbooks
-bootstrap.yml
-
-Purpose:
-
-Initial server bootstrap.
-
-Tasks:
-
-system package updates
-install dependencies
-configure baseline packages
-
-Flow:
-
-bootstrap.yml
-   |
-   +--> common role
-deploy.yml
-
-Purpose:
-
-Application deployment automation.
-
-Tasks:
-
-Docker install
-container deployment
-application configuration
-
-Flow:
-
-deploy.yml
-   |
-   +--> docker role
-   |
-   +--> app role
-Roles
-common role
-
-Tasks:
-
-OS updates
-package installation
-system prep
-docker role
-
-Tasks:
-
-install Docker engine
-enable Docker service
-runtime configuration
-app role
-
-Tasks:
-
-pull container image
-start production container
-validate deployment
-Issues Faced
-1. Package Manager Differences
-
-Problem:
-
-Ubuntu vs Amazon Linux package manager mismatch.
-
-Fix:
-
-Adjusted module usage.
-
-2. SSM Connectivity
-
-Problem:
-
-No SSH access.
-
-Fix:
-
-Used:
-
-community.aws.aws_ssm
-
-Enterprise-grade secure remote execution.
-
-3. Module Compatibility
-
-Problem:
-
-Ansible module syntax mismatch.
-
-Fix:
-
-Corrected task definitions.
-
-Phase 3 — Containerization
-Objective
-
-Production-ready application containerization.
-
-Application
-
-Python Flask service.
-
-Endpoints:
-
-/
-/health
-Docker Build
-
-Production container:
-
-Python slim image
-dependency installation
-non-root execution
-hardened runtime
-Final Docker Security Controls
-
-Implemented:
-
-non-root user
-minimal base image
-no privilege escalation
-reduced attack surface
-Issues Faced
-1. Missing Dockerfile Path
-
-Problem:
-
-Build failed:
-
-failed to read dockerfile
-
-Fix:
-
-Correct build context.
-
-2. Vulnerability Findings
-
-Trivy detected:
-
-jaraco.context
-wheel CVEs
-
-Fix:
-
-dependency upgrades
-workflow scope refinement
-Phase 4 — Amazon ECR
-Objective
-
-Central container registry.
-
-Steps
-
-Created:
-
-aws ecr create-repository
-
-Authenticated:
-
-aws ecr get-login-password
-
-Tagged image.
-
-Pushed image.
-
-Security
-
-Enabled vulnerability scanning.
-
-Issues Faced
-ECR Auth
-
-Problem:
-
-Login failures.
-
-Fix:
-
-Correct AWS auth flow.
-
-Phase 5 — CI/CD Automation
-GitHub Actions Workflows
-terraform-ci.yml
-
-Purpose:
-
-Terraform quality checks.
-
-Stages:
-
-checkout
-terraform init
-validate
-fmt
-plan
-app-ci.yml
-
-Purpose:
-
-Build and publish container.
-
-Stages:
-
-checkout
-AWS auth
-ECR login
-docker build
-docker push
-deploy.yml
-
-Purpose:
-
-Continuous deployment to EKS.
-
-Stages:
-
-AWS auth via OIDC
-kubeconfig update
-cluster auth validation
-Helm deploy
-rollout verification
-security-scan.yml
-
-Purpose:
-
-Enterprise security validation.
-
-Stages:
-
-Trivy image scan
-Trivy IaC scan
-CI/CD Architecture
-Git Push
-   |
-   +--> Terraform CI
-   |
-   +--> App CI
-   |
-   +--> Enterprise Security Scan
-   |
-   +--> Deploy to EKS
-CI/CD Issues Faced
-1. Invalid Trivy Action Version
-
-Problem:
-
-unable to find version
-
-Fix:
-
-Updated action reference.
-
-2. OIDC Permission Failure
-
-Problem:
-
-Could not load credentials
-
-Fix:
-
-Added:
-
-id-token: write
-3. SARIF Upload Failure
-
-Problem:
-
-GitHub integration restriction.
-
-Fix:
-
-Removed SARIF upload dependency.
-
-4. Security Findings
-
-Detected:
-
-Docker security issues
-Kubernetes hardening gaps
-Terraform risks
-
-Fix:
-
-Iterative remediation.
-
-Phase 6 — Kubernetes / EKS
-Objective
-
-Production container orchestration.
-
-Provisioned
-
-Amazon EKS:
-
-managed control plane
-managed node groups
-OIDC provider
-Kubernetes Resources
-
-Deployed:
-
-deployment
-service
-namespace
-Helm Migration
-
-Moved from raw manifests to Helm.
-
-Benefits:
-
-versioned deployments
-parameterization
-repeatability
-rollback capability
-Security Hardening
-
-Added:
-
-runAsNonRoot
-readOnlyRootFilesystem
-dropped Linux capabilities
-no privilege escalation
-Issues Faced
-1. EKS Auth Failures
-
-Problem:
-
-kubectl auth denied.
-
-Fix:
-
-Access entries + admin policy.
-
-2. LoadBalancer Delays
-
-Problem:
-
-ELB provisioning latency.
-
-Fix:
-
-wait + validation.
-
-3. Deployment Rollout Failures
-
-Fix:
-
-Helm rollout validation.
-
-Phase 7 — Observability
-Objective
-
-Production monitoring.
-
-Implemented
-CloudWatch Container Insights
-
-Metrics:
-
-CPU
-memory
-node metrics
-pod metrics
-Fluent Bit
-
-Log forwarding.
-
-Dashboard
-
-Created:
-
-enterprise-eks-dashboard
-Alarms
-
-Configured:
-
-threshold monitoring
-operational alerting
-SNS
-
-Email alert delivery.
-
-Issues Faced
-Metric Delay
-
-CloudWatch metric ingestion lag.
-
-Fix:
-
-wait + validation.
-
-Phase 8 — Security Hardening
-Implemented
-GitHub OIDC Federation
-
-Purpose:
-
-Eliminate static AWS credentials.
-
-Result:
-
-Passwordless GitHub → AWS auth.
-
-CloudTrail
-
-Audit logging enabled.
-
-IAM Access Analyzer
-
-Privilege visibility.
-
-VPC Flow Logs
-
-Network audit visibility.
-
-Secrets Manager
-
-Integrated secure runtime secret retrieval.
-
-Validated from Kubernetes pod.
-
-Trivy Security Scanning
-
-Implemented:
-
-container scan
-IaC scan
-Issues Faced
-IAM Propagation Delay
-
-Policy attachment delay.
-
-Fix:
-
-retry after propagation.
-
-Secret Validation Pod Failure
-
-Initial transient pod issue.
-
-Fix:
-
-validated with logs.
-
-Validation Commands
-Kubernetes
-kubectl get pods -A
-kubectl get svc -A
-EKS
-aws eks describe-cluster
-CloudWatch
-aws cloudwatch list-dashboards
-SNS
-aws sns list-topics
-CloudTrail
-aws cloudtrail describe-trails
-Flow Logs
-aws ec2 describe-flow-logs
-Access Analyzer
-aws accessanalyzer list-analyzers
-GitHub Actions
-gh run list
-Security Controls Summary
-Control	Status
-GitHub OIDC Federation	✅
-No Static AWS Keys	✅
-SSM-only EC2 Access	✅
-Non-root Containers	✅
-Hardened Kubernetes Runtime	✅
-Trivy Image Scanning	✅
-Trivy IaC Scanning	✅
-CloudTrail	✅
-IAM Access Analyzer	✅
-VPC Flow Logs	✅
-Secrets Manager	✅
-ECR Vulnerability Scanning	✅
-Cost Optimization
-
-Cleanup order:
-
-delete service
-uninstall Helm release
-delete namespace
-delete EKS cluster
-delete secret
-terraform destroy
-delete ECR repo
-
-Reason:
-
-Avoid dependency failures.
-
-Lessons Learned
-
-Key enterprise lessons:
-
-OIDC is superior to static credentials
-IaC requires dependency discipline
-Kubernetes security defaults are insufficient
-observability must be designed early
-CI/CD security gates expose real weaknesses
-least privilege IAM matters
-container hardening is essential
-monitoring is non-optional
-secret management should never rely on hardcoded values
+├── k8s/base/                   # Raw Kubernetes base manifests
+└── .github/workflows/
+    ├── terraform-ci.yml        # IaC quality gates
+    ├── app-ci.yml              # Build + push to ECR
+    ├── deploy.yml              # OIDC → EKS Helm deploy
+    └── security-scan.yml       # Trivy image + IaC scan
+```
+
+---
+
+## Key Lessons Learned
+
+- **OIDC over static credentials** — eliminates the #1 source of cloud credential leaks in CI/CD pipelines
+- **IaC dependency discipline matters** — explicit resource ordering prevents race conditions at scale
+- **Kubernetes security defaults are insufficient** — runtime hardening must be applied explicitly
+- **Observability is architecture, not an afterthought** — designing metrics and alerting from day one prevents operational blind spots
+- **CI/CD security gates expose real weaknesses** — Trivy scanning surfaced vulnerabilities that manual review missed
+- **Secret management must never rely on hardcoded values** — Secrets Manager integration validated end-to-end from a running pod
+
+---
+
+## Teardown Order
+
+To avoid dependency failures during cleanup:
+
+```bash
+kubectl delete svc <service-name>          # Remove LoadBalancer first
+helm uninstall <release> -n <namespace>    # Uninstall Helm release
+kubectl delete namespace <namespace>       # Delete namespace
+eksctl delete cluster <cluster-name>      # Delete EKS cluster
+aws secretsmanager delete-secret ...      # Delete secrets
+terraform destroy                          # Destroy all remaining infra
+aws ecr delete-repository ...             # Delete ECR repo
+```
