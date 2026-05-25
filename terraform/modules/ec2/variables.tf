@@ -4,7 +4,7 @@ variable "environment" {
 
 variable "instance_type" {
   type    = string
-  default = "c7i-flex.large"
+  default = "t3.micro"
 }
 
 variable "subnet_id" {
