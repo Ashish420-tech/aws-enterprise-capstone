@@ -48,7 +48,7 @@ module "eks" {
   environment         = var.environment
   cluster_name        = "${var.environment}-enterprise-eks"
   subnet_ids          = module.vpc.private_subnet_ids
-  node_instance_types = ["t3.medium"]
+  node_instance_types = ["t3.micro"]
 
   desired_size = 2
   min_size     = 1
