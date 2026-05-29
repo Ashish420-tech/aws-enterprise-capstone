@@ -1,0 +1,7 @@
+controller:
+  serviceType: LoadBalancer
+
+persistence:
+  enabled: true
+  storageClass: gp3
+  size: 20Gi

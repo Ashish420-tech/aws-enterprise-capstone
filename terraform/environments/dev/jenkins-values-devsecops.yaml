@@ -1,0 +1,21 @@
+controller:
+  serviceType: LoadBalancer
+
+  installPlugins:
+    - kubernetes
+    - kubernetes-cli
+    - workflow-aggregator
+    - pipeline-stage-view
+    - git
+    - github
+    - docker-workflow
+    - sonar
+    - dependency-check-jenkins-plugin
+    - credentials
+    - configuration-as-code
+    - blueocean
+
+  persistence:
+    enabled: true
+    storageClass: gp3
+    size: 20Gi

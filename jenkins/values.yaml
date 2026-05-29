@@ -1,0 +1,22 @@
+controller:
+  admin:
+    username: admin
+    password: Admin@123
+
+  serviceType: LoadBalancer
+
+  persistence:
+    enabled: true
+    storageClass: gp2
+    size: 20Gi
+
+  installPlugins:
+    - kubernetes
+    - workflow-aggregator
+    - git
+    - github
+    - docker-workflow
+    - configuration-as-code
+
+agent:
+  enabled: true
