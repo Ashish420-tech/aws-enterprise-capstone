@@ -37,7 +37,7 @@ module "ec2" {
   source = "../../modules/ec2"
 
   environment           = var.environment
-  instance_type         = "t3.micro"
+  instance_type         = "c7i-flex.large"
   subnet_id             = module.vpc.private_subnet_ids[0]
   security_group_id     = module.security_group.security_group_id
   instance_profile_name = module.iam_ec2.instance_profile_name
@@ -48,9 +48,9 @@ module "eks" {
   environment         = var.environment
   cluster_name        = "${var.environment}-enterprise-eks"
   subnet_ids          = module.vpc.private_subnet_ids
-  node_instance_types = ["t3.medium"]
+  node_instance_types = ["c7i-flez.large"]
 
-  desired_size = 2
-  min_size     = 1
-  max_size     = 3
+  desired_size = 4
+  min_size     = 2
+  max_size     = 6
 }

@@ -1,0 +1,12 @@
+controller:
+  installPlugins:
+    - kubernetes
+    - workflow-aggregator
+    - git
+    - github
+    - docker-workflow
+    - sonar
+    - dependency-check-jenkins-plugin
+    - credentials
+    - configuration-as-code
+    - blueocean

@@ -20,7 +20,7 @@ spec:
 
       containers:
       - name: enterprise-app
-        image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:v1
+        image: 742820980479.dkr.ecr.ap-south-1.amazonaws.com/aws-enterprise-capstone/app:latest
 
         securityContext:
           allowPrivilegeEscalation: false
